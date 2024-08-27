@@ -67,7 +67,6 @@
     extensions = [
       { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } #1Password
       { id = "fjcldmjmjhkklehbacihaiopjklihlgg"; } #News Feed Eradicator
-      { id = "amhmeenmapldpjdedekalnfifgnpfnkc"; } #ChatGPT Sidebar
       { id = "bhghoamapcdpbohphigoooaddinpkbai"; } #Authenticator
       { id = "laookkfknpbbblfpciffpaejjkokdgca"; } #Momentum
     ];
