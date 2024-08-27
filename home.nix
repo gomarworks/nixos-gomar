@@ -48,6 +48,9 @@
     # '')
   ];
 
+  # Disable mutableExtensionsDir  
+  home.mutableExtensionsDir = false;  
+
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
