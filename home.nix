@@ -54,6 +54,7 @@
       vscodevim.vim
       brandonkirbyson.solarized-palenight
       bbenoist.nix
+      github.copilot
     ];
   };
 
