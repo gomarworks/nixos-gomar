@@ -48,11 +48,9 @@
     # '')
   ];
 
-  # Disable mutableExtensionsDir  
-  home.mutableExtensionsDir = false;  
-
   programs.vscode = {
     enable = true;
+    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       vscodevim.vim
       brandonkirbyson.solarized-palenight
