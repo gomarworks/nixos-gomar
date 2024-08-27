@@ -52,7 +52,7 @@
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       vscodevim.vim
-      brandonkirbyson.solarized-palenight
+      #brandonkirbyson.solarized-palenight
       bbenoist.nix
       github.copilot
     ];
