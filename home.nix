@@ -57,6 +57,7 @@
       bbenoist.nix
       github.copilot
       ms-vscode.cpptools-extension-pack
+      vue.volar
     ];
   };
 
