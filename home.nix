@@ -29,7 +29,6 @@
     devbox
     git
     gh
-    zsh
     htop
     cmus
     xdg-desktop-portal
@@ -48,21 +47,33 @@
   ];
 
   imports = [ inputs.nixvim.homeManagerModules.default ]; 
- 
+
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
     colorschemes.gruvbox = {
       enable = true;
     };
+
     plugins = {
       lualine.enable = true;
-      telescope.enable = true;
+      transparent.enable = true;
+      telescope = {
+        enable = true;
+	keymaps."<C-p>" = "git_files";
+      };
       harpoon = {  # Yo Gomar :)
         enable = true;
         keymaps.addFile = "<leader>a";
+	keymaps.toggleQuickMenu = "<leader>m";
       };
     };
+    
+    clipboard = {
+      register = "unnamedplus";
+      providers.wl-copy.enable = true;
+    };
+
     opts = {
       relativenumber = true;
       incsearch = true;
@@ -75,8 +86,7 @@
       dynamic_background_opacity = true;
       confirm_os_window_close = 0;
       window_padding_width = 0;
-      background_opacity = "0.5";
-      background_blur = 5;
+      background_opacity = "0.7";
     };
   };
 
