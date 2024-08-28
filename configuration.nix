@@ -88,7 +88,9 @@
     #pass inputs to home-manager modules
     extraSpecialArgs = { inherit inputs; };
     users = {
-      "gomar" = import ./home.nix;
+      "gomar" = import ./home.nix {
+        inherit inputs pkgs config;
+      };
     };
   };
  

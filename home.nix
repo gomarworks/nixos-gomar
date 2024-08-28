@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs,... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -47,6 +47,18 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  imports = [ inputs.nixvim.homeManagerModules.default ]; 
+ 
+  programs.nixvim = {
+    enable = true;
+    defaultEditor = true;
+    colorschemes.gruvbox.enable = true;
+    plugins = {
+      lualine.enable = true;
+    };
+  };
+
 
   programs.vscode = {
     enable = true;
