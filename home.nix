@@ -56,6 +56,15 @@
     colorschemes.gruvbox.enable = true;
     plugins = {
       lualine.enable = true;
+      telescope.enable = true;
+      harpoon = {  # Yo Gomar :)
+        enable = true;
+        keymaps.addFile = "<leader>a";
+      };
+    };
+    opts = {
+      relativenumber = true;
+      incsearch = true;
     };
   };
 
