@@ -54,7 +54,6 @@
     colorschemes.gruvbox = {
       enable = true;
     };
-
     plugins = {
       lualine.enable = true;
       transparent.enable = true;
@@ -62,24 +61,22 @@
         enable = true;
 	keymaps."<C-p>" = "git_files";
       };
-      harpoon = {  # Yo Gomar :)
+      harpoon = { 
         enable = true;
         keymaps.addFile = "<leader>a";
 	keymaps.toggleQuickMenu = "<leader>m";
       };
-    };
-    
+    }; 
     clipboard = {
       register = "unnamedplus";
       providers.wl-copy.enable = true;
     };
-
     opts = {
       relativenumber = true;
       incsearch = true;
     };
   };
-  
+
   programs.kitty = {
     enable = true;
     settings = {
