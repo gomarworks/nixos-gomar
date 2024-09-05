@@ -1,152 +1,72 @@
 { config, pkgs, inputs,... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  ##########################################################################
+  # Basic Home Manager Configuration
+  ##########################################################################
   home.username = "gomar";
   home.homeDirectory = "/home/gomar";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  # Define the Home Manager release compatibility
+  home.stateVersion = "24.05"; # Please read the comment before changing. # Do not TOUCH
   
+  # Allow installation of unfree packages
   nixpkgs.config = {
     allowUnfree = true;
   };
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+  ##########################################################################
+  # Home Manager Packages
+  ##########################################################################
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    blender
-    openscad
-    audacity
-    teams-for-linux
-    signal-desktop
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    blender # 3D graphics
+    openscad # parametric CAD
+    audacity # Audio editing 
+    teams-for-linux # Microsoft Teams for linux
+    signal-desktop # Signal desktop client
   ];
 
-  imports = [ inputs.nixvim.homeManagerModules.default ]; 
+  ##########################################################################
+  # Import External Configurations
+  ##########################################################################
+  imports = [ 
+    ./homeManagerModules/nixvim.nix # Nixvim configuration
+    ./homeManagerModules/kitty.nix # Kitty configuration
+    ./homeManagerModules/zsh.nix # Zsh configuration
+    inputs.nixvim.homeManagerModules.default # Nixvim module import
+  ]; 
 
-  programs.nixvim = {
-    enable = true;
-    defaultEditor = true;
-    colorschemes.gruvbox = {
-      enable = true;
-    };
-    plugins = {
-      lualine.enable = true;
-      transparent.enable = true;
-      telescope = {
-        enable = true;
-	keymaps."<C-p>" = "git_files";
-      };
-      harpoon = { 
-        enable = true;
-        keymaps.addFile = "<leader>a";
-	keymaps.toggleQuickMenu = "<leader>m";
-      };
-    }; 
-    clipboard = {
-      register = "unnamedplus";
-      providers.wl-copy.enable = true;
-    };
-    opts = {
-      relativenumber = true;
-      incsearch = true;
-    };
-  };
+  ##########################################################################
+  # Chromium (Brave) Configuration
+  ##########################################################################
 
-  programs.kitty = {
-    enable = true;
-    settings = {
-      dynamic_background_opacity = true;
-      confirm_os_window_close = 0;
-      window_padding_width = 0;
-      background_opacity = "0.7";
-    };
-  };
-
- # programs.vscode = {
- #   enable = true;
- #   mutableExtensionsDir = false;
- #   extensions = with pkgs.vscode-extensions; [
- #     vscodevim.vim
- #     brandonkirbyson.solarized-palenight
- #     bbenoist.nix
- #     github.copilot
- #     ms-vscode.cpptools-extension-pack
- #     vue.volar
- #   ];
- # };
-
- programs.chromium = {
+  programs.chromium = {
     enable = true;
     package = pkgs.brave;
+
     extensions = [
       { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } #1Password
       { id = "fjcldmjmjhkklehbacihaiopjklihlgg"; } #News Feed Eradicator
       { id = "bhghoamapcdpbohphigoooaddinpkbai"; } #Authenticator
       { id = "laookkfknpbbblfpciffpaejjkokdgca"; } #Momentum
     ];
+
    commandLineArgs = [
       "--disable-features=PasswordManagerOnboarding"
       "--disable-features=AutofillEnableAccountWalletStorage"
     ];
   };
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # ''
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/gomar/etc/profile.d/hm-session-vars.sh
-  #
+  ##########################################################################
+  # Environment Variables
+  ##########################################################################
   home.sessionVariables = {
-    # EDITOR = "emacs";
+  # EDITOR = "emacs"; # Example, set EDITOR environment variable
   };
 
-  # Let Home Manager install and manage itself.
+  ##########################################################################
+  # Home Manager Self-Management
+  ##########################################################################
   programs.home-manager.enable = true;
+
 }
