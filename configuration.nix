@@ -101,6 +101,12 @@
   #  neovim config in user.nix
   #  Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    xdg-desktop-portal
+    xfce.thunar
+    git
+    htop
+    cmus
+    teams-for-linux
     neofetch
   ];
 
