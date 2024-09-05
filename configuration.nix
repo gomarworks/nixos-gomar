@@ -100,14 +100,16 @@
   environment.systemPackages = with pkgs; [
   #  neovim config in user.nix
   #  Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
     xdg-desktop-portal
     xfce.thunar
+    neofetch
+    asciiquarium-transparent
+    wget
     git
     htop
+    nmap
     cmus
-    teams-for-linux
-    neofetch
+    vlc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
