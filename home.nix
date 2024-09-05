@@ -26,12 +26,11 @@
     # # "Hello, world!" when run.
     teams-for-linux
     xfce.thunar
-    devbox
     git
-    gh
     htop
     cmus
     xdg-desktop-portal
+    blender 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -87,20 +86,20 @@
     };
   };
 
-  programs.vscode = {
-    enable = true;
-    mutableExtensionsDir = false;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      brandonkirbyson.solarized-palenight
-      bbenoist.nix
-      github.copilot
-      ms-vscode.cpptools-extension-pack
-      vue.volar
-    ];
-  };
+ # programs.vscode = {
+ #   enable = true;
+ #   mutableExtensionsDir = false;
+ #   extensions = with pkgs.vscode-extensions; [
+ #     vscodevim.vim
+ #     brandonkirbyson.solarized-palenight
+ #     bbenoist.nix
+ #     github.copilot
+ #     ms-vscode.cpptools-extension-pack
+ #     vue.volar
+ #   ];
+ # };
 
-  programs.chromium = {
+ programs.chromium = {
     enable = true;
     package = pkgs.brave;
     extensions = [
@@ -109,7 +108,7 @@
       { id = "bhghoamapcdpbohphigoooaddinpkbai"; } #Authenticator
       { id = "laookkfknpbbblfpciffpaejjkokdgca"; } #Momentum
     ];
-    commandLineArgs = [
+   commandLineArgs = [
       "--disable-features=PasswordManagerOnboarding"
       "--disable-features=AutofillEnableAccountWalletStorage"
     ];
@@ -127,7 +126,7 @@
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    # ''
   };
 
   # Home Manager can also manage your environment variables through
