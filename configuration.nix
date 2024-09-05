@@ -7,136 +7,123 @@
       inputs.home-manager.nixosModules.default
     ];
 
-  # Bootloader.
+  #######################################################################
+  # Bootloader Configuration
+  #######################################################################
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  #######################################################################
+  # Networking Configuration
+  #######################################################################
   networking.hostName = "desktopGS"; # Define your hostname.
+  networking.networkmanager.enable = true; # Enable network management
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  nix.settings.trusted-substituters = [ "https://cache.flox.dev" ];
-  nix.settings.trusted-public-keys = [ "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs=" ];
+  #######################################################################
+  # Nix Configuration
+  #######################################################################
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Brussels";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Disable unneeded gnome packages
-  services.gnome.core-utilities.enable = false;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-substituters = [ "https://cache.flox.dev" ];
+    trusted-public-keys = [ "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs=" ];
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # Allow installation of unfree packages
+  nixpkgs.config.allowUnfree = true;
 
-  # Enable bluetooth
-  hardware.bluetooth.enable = true;
+  #######################################################################
+  # Localization & Time Configuration
+  #######################################################################
+ 
+  time.timeZone = "Europe/Brussels"; # Set system timezone
+  i18n.defaultLocale = "en_US.UTF-8"; # Set default locale
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+  #######################################################################
+  # User Configuration
+  #######################################################################
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gomar = {
     isNormalUser = true;
     description = "gomar";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    extraGroups = [ "networkmanager" "wheel"]; # Add user to network and admin groups
   };
 
   home-manager = {
-    #pass inputs to home-manager modules
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "gomar" = import ./home.nix {
-        inherit inputs pkgs config;
-      };
+    extraSpecialArgs = { inherit inputs; }; # Pass inputs to home-manager
+    users.gomar = import ./home.nix {
+      inherit inputs pkgs config;
     };
   };
- 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  #######################################################################
+  # Graphical Interface (X11 and GNOME)
+  #######################################################################
+  services.xserver.enable = true; # Enable X11 windowing system
+
+  # Enable the GNOME Desktop Environment
+  services.xserver.displayManager.gdm.enable = true; # Enable GNOME Display Manager
+  services.xserver.desktopManager.gnome.enable = true; # Enable GNOME Desktop Environment
+  services.gnome.core-utilities.enable = false; # Disable unneeded GNOME utilities
+
+  # Keyboard configuration for X11
+  services.xserver.xkb = {
+    layout = "us"; # Set US layout
+    variant = ""; # No variant
+  };
+
+  #######################################################################
+  # Hardware Configuration
+  #######################################################################
+  hardware.bluetooth.enable = true; # Enable Bluetooth
+  hardware.pulseaudio.enable = false; # Disable PulseAudio (using pipewire) 
+  security.rtkit.enable = true; # Enable real-time scheduling daemon
+
+  # PipeWire Configuration (Sound system)
+  services.pipewire = {
+    enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true; # Enable 32-bit ALSA support
+    };
+    pulse.enable = true; # Enable PulseAudio compatibility
+    # jack.enable = true; # Uncomment for JACK support (if needed)
+  };
+
+  # Enable printing support (cups)
+  services.printing.enable = true;
+  
+  #######################################################################
+  # System-Wide Installed Packages
+  #######################################################################
   environment.systemPackages = with pkgs; [
-  #  neovim config in user.nix
-  #  Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    xdg-desktop-portal
-    xfce.thunar
-    neofetch
-    asciiquarium-transparent
-    wget
-    git
-    htop
-    nmap
-    cmus
-    vlc
+    xdg-desktop-portal # Desktop portal for better Wayland support
+    xfce.thunar # Thunar file manager
+    neofetch # System info tool
+    asciiquarium-transparent # Fun terminal aquarium
+    wget # Command line file download
+    git # Version control system
+    htop # Interactive process viewer
+    nmap # Network exploration tool
+    cmus # Command line music player
+    vlc # Media player
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  #######################################################################
+  # Other Services (Optional)
+  #######################################################################
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
+  # services.openssh.enable = true; # Uncomment to enable OpenSSH
+  
+  # Firewall configuration (uncomment and customize if needed)
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # networking.firewall.enable = false; # Disable firewall (if not needed)
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  #######################################################################
+  # System Version
+  #######################################################################
+  system.stateVersion = "24.05"; # NixOS release version for stateful data DON'T TOUCH
 
 }
