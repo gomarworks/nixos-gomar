@@ -32,7 +32,6 @@
   imports = [ 
     ./homeManagerModules/nixvim.nix # Nixvim configuration
     ./homeManagerModules/kitty.nix # Kitty configuration
-    ./homeManagerModules/zsh.nix # Zsh configuration
     inputs.nixvim.homeManagerModules.default # Nixvim module import
   ]; 
 
@@ -56,6 +55,7 @@
       "--disable-features=AutofillEnableAccountWalletStorage"
     ];
   };
+
 
   ##########################################################################
   # Environment Variables
