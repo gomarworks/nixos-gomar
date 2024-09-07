@@ -24,6 +24,8 @@
     audacity # Audio editing 
     teams-for-linux # Microsoft Teams for linux
     signal-desktop # Signal desktop client
+    xclip
+    lazygit
   ];
 
   ##########################################################################
