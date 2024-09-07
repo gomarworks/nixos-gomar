@@ -30,8 +30,8 @@
   # Import External Configurations
   ##########################################################################
   imports = [ 
-    ./homeManagerModules/nixvim.nix # Nixvim configuration
-    ./homeManagerModules/kitty.nix # Kitty configuration
+    ../../homeManagerModules/nixvim.nix # Nixvim configuration
+    ../../homeManagerModules/kitty.nix # Kitty configuration
     inputs.nixvim.homeManagerModules.default # Nixvim module import
   ]; 
 
