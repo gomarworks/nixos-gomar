@@ -115,6 +115,13 @@
   # Other Services (Optional)
   #######################################################################
 
+  stylix.enable = true;
+  stylix.image = ./wallpaper.png;
+  stylix.opacity = {
+    terminal = 0.7;
+  };
+
+
   # services.openssh.enable = true; # Uncomment to enable OpenSSH
   # Firewall configuration (uncomment and customize if needed)
   # networking.firewall.allowedTCPPorts = [ ... ];
