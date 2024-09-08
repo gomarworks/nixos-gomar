@@ -66,7 +66,7 @@
   # Enable the GNOME Desktop Environment
   services.xserver.displayManager.gdm.enable = true; # Enable GNOME Display Manager
   services.xserver.desktopManager.gnome.enable = true; # Enable GNOME Desktop Environment
-  services.gnome.core-utilities.enable = false; # Disable unneeded GNOME utilities
+  services.gnome.core-utilities.enable = true; # Disable unneeded GNOME utilities
 
   # Keyboard configuration for X11
   services.xserver.xkb = {
@@ -117,7 +117,6 @@
   #######################################################################
 
   # services.openssh.enable = true; # Uncomment to enable OpenSSH
-  
   # Firewall configuration (uncomment and customize if needed)
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
