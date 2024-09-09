@@ -19,6 +19,7 @@
   # Home Manager Packages
   ##########################################################################
   home.packages = with pkgs; [
+    gimp
     blender # 3D graphics
     openscad # parametric CAD
     audacity # Audio editing 
