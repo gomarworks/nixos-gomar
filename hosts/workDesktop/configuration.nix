@@ -130,8 +130,8 @@
   #######################################################################
  
   stylix.enable = true;
-  stylix.image = ./wallpaper.png;
-    stylix.opacity = {
+  stylix.image = ./wallhaven.jpg;
+  stylix.opacity = {
     terminal = 0.7;
   };
   stylix.cursor.package = pkgs.bibata-cursors;

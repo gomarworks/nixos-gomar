@@ -5,9 +5,6 @@
     enable = true;
     defaultEditor = true;
 
-    # Color scheme configuration
-    colorschemes.gruvbox.enable = true;
-
     # Plugin configuration
     plugins = {
       lualine.enable = true;        # Status line plugin
