@@ -26,8 +26,6 @@
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    trusted-substituters = [ "https://cache.flox.dev" ];
-    trusted-public-keys = [ "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs=" ];
   };
 
   # Allow installation of unfree packages
@@ -65,7 +63,6 @@
   # Enable the GNOME Desktop Environment
   services.xserver.displayManager.gdm.enable = true; # Enable GNOME Display Manager
   services.xserver.desktopManager.gnome.enable = true; # Enable GNOME Desktop Environment
-  services.gnome.core-utilities.enable = false; # Disable unneeded GNOME utilities
 
   # Keyboard configuration for X11
   services.xserver.xkb = {
@@ -99,7 +96,6 @@
   #######################################################################
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal # Desktop portal for better Wayland support
-    xfce.thunar # Thunar file manager
     neofetch # System info tool
     asciiquarium-transparent # Fun terminal aquarium
     wget # Command line file download
@@ -113,6 +109,12 @@
   #######################################################################
   # Other Services (Optional)
   #######################################################################
+ 
+  stylix.enable = true;
+  stylix.image = ./wallpaper.png;
+    stylix.opacity = {
+    terminal = 0.7;
+  };
 
   # services.openssh.enable = true; # Uncomment to enable OpenSSH
   
