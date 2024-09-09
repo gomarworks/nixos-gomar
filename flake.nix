@@ -46,15 +46,15 @@
       };
 
       # Laptop configuration (you can add this when needed)
-      # laptop = nixpkgs.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   specialArgs = { inherit inputs; };
-      #   modules = [
-      #     ./hosts/laptop/configuration.nix  # Laptop's configuration (if applicable)
-      #     inputs.home-manager.nixosModules.default
-      #     inputs.stylix.nixosModules.stylix
-      #   ];
-      # };
+      workLaptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+       	specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/workLaptop/configuration.nix  # Laptop's configuration (if applicable)
+          inputs.home-manager.nixosModules.default
+          inputs.stylix.nixosModules.stylix
+        ];
+      };
     };
   };
 }
