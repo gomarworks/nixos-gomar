@@ -19,12 +19,12 @@
   # Home Manager Packages
   ##########################################################################
   home.packages = with pkgs; [
-    gimp
     blender # 3D graphics
     openscad # parametric CAD
     audacity # Audio editing 
     teams-for-linux # Microsoft Teams for linux
     signal-desktop # Signal desktop client
+    gimp
     xclip
     lazygit
   ];
