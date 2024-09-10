@@ -65,7 +65,7 @@
   services.xserver.desktopManager.gnome.enable = true; # Enable GNOME Desktop Environment
 
   # Delete annoying GNOME apps
-  environment.gnome.excludePackages = with pkgs.gnome; [
+  environment.gnome.excludePackages = with pkgs; [
     baobab      # disk usage analyzer
     cheese      # photo booth
     eog         # image viewer
