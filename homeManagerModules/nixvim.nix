@@ -8,6 +8,8 @@
     # Plugin configuration
     plugins = {
       lualine.enable = true;        # Status line plugin
+      lazygit.enable = true;
+      noice.enable = true;
       transparent.enable = true;    # Transparent background
       telescope = {                 # Fuzzy finder plugin
         enable = true;
@@ -15,8 +17,8 @@
       };
       harpoon = {                   # Bookmarking plugin
         enable = true;
-        keymaps.addFile = "<leader>a";         # Add file shortcut
-        keymaps.toggleQuickMenu = "<leader>m"; # Toggle quick menu shortcut
+        keymaps.addFile = "<C-a>";         # Add file shortcut
+        keymaps.toggleQuickMenu = "<C-;>"; # Toggle quick menu shortcut
       };
     };
 
@@ -25,6 +27,7 @@
       register = "unnamedplus";           # Use system clipboard
       providers.wl-copy.enable = true;    # Enable clipboard on Wayland
     };
+
     opts = {
       relativenumber = true;  # Relative line numbers
       incsearch = true;       # Incremental search
