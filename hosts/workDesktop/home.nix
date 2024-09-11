@@ -29,7 +29,9 @@
     lazygit
     vscode
   ];
-
+  
+  programs.vscode.mutableExtensionsDir = false;
+  
   ##########################################################################
   # Import External Configurations
   ##########################################################################
