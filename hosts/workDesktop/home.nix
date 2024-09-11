@@ -35,6 +35,7 @@
   imports = [ 
     ../../homeManagerModules/nixvim.nix # Nixvim configuration
     ../../homeManagerModules/kitty.nix # Kitty configuration
+    ../../homeManagerModules/vscode.nix # VSCode configuration
     inputs.nixvim.homeManagerModules.default # Nixvim module import
   ]; 
 
