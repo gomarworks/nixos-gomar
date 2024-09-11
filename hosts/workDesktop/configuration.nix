@@ -8,7 +8,7 @@
     ];
 
   #######################################################################
-  # Bootloader Configuration
+  # Bootloader Configuration workDesktop
   #######################################################################
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
