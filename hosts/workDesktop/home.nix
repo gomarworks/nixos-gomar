@@ -27,7 +27,6 @@
     gimp
     xclip
     lazygit
-   # vscode
     code-cursor
   ];
   
