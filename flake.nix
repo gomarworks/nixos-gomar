@@ -45,7 +45,7 @@
         ];
       };
 
-      # Laptop configuration (you can add this when needed)
+      # Laptop configuration
       workLaptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
        	specialArgs = { inherit inputs; };

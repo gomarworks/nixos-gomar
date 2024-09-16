@@ -16,7 +16,7 @@
   #######################################################################
   # Networking Configuration
   #######################################################################
-  networking.hostName = "desktopGS"; # Define your hostname.
+  networking.hostName = "workDesktop"; # Define your hostname.
   networking.networkmanager.enable = true; # Enable network management
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -123,6 +123,8 @@
     htop # Interactive process viewer
     nmap # Network exploration tool
     cmus # Command line music player
+    lazygit # Git GUI
+    xclip # Clipboard tool
   ];
 
   #######################################################################

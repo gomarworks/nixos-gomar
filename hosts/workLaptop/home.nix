@@ -25,8 +25,6 @@
     teams-for-linux # Microsoft Teams for linux
     signal-desktop # Signal desktop client
     gimp
-    xclip
-    lazygit
   ];
 
   ##########################################################################
@@ -35,6 +33,7 @@
   imports = [ 
     ../../homeManagerModules/nixvim.nix # Nixvim configuration
     ../../homeManagerModules/kitty.nix # Kitty configuration
+    ../../homeManagerModules/emacs.nix # Emacs configuration
     inputs.nixvim.homeManagerModules.default # Nixvim module import
   ]; 
 
