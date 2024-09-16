@@ -5,6 +5,18 @@
     # Pulling the Nixpkgs input from the stable NixOS release 24.05
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Disko for disk layout
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Secrets management
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home Manager input, following the same Nixpkgs version
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -18,7 +30,10 @@
     };
 
     # Stylix input for additional configurations
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -53,6 +68,17 @@
           ./hosts/workLaptop/configuration.nix  # Laptop's configuration (if applicable)
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
+        ];
+      };
+
+      # Raspberry Pi configuration
+      raspberryPi = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/raspberryPi/configuration.nix  # Raspberry Pi's configuration
+          inputs.home-manager.nixosModules.default
+          inputs.disko.nixosModules.disko
         ];
       };
     };

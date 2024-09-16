@@ -45,7 +45,7 @@
   users.users.gomar = {
     isNormalUser = true;
     description = "gomar";
-    extraGroups = [ "networkmanager" "wheel"]; # Add user to network and admin groups
+    extraGroups = [ "networkmanager" "wheel" "audio"]; # Add user to network and admin groups
   };
 
   home-manager = {
@@ -105,7 +105,7 @@
       support32Bit = true; # Enable 32-bit ALSA support
     };
     pulse.enable = true; # Enable PulseAudio compatibility
-    # jack.enable = true; # Uncomment for JACK support (if needed)
+    jack.enable = true; # Uncomment for JACK support (if needed)
   };
 
   # Enable printing support (cups)
