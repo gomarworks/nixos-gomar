@@ -27,10 +27,9 @@
     gimp
     xclip
     lazygit
-    vscode
+   # vscode
+    code-cursor
   ];
-  
-  programs.vscode.mutableExtensionsDir = false;
   
   ##########################################################################
   # Import External Configurations
