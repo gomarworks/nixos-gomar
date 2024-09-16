@@ -76,7 +76,7 @@
         system = "aarch64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/raspberryPi/configuration.nix  # Raspberry Pi's configuration
+          ./hosts/workPi/configuration.nix  # Raspberry Pi's configuration
           inputs.home-manager.nixosModules.default
           inputs.disko.nixosModules.disko
         ];
