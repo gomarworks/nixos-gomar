@@ -130,7 +130,7 @@
   #######################################################################
  
   stylix.enable = true;
-  stylix.image = ./wallhaven2.jpg;
+  stylix.image = ./wallpaper.jpg;
   stylix.opacity = {
     terminal = 0.7;
   };
