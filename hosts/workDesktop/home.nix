@@ -29,6 +29,7 @@
     lazygit
     code-cursor
     obsidian
+    orca-slicer
   ];
   
   ##########################################################################
@@ -54,6 +55,8 @@
       { id = "fjcldmjmjhkklehbacihaiopjklihlgg"; } #News Feed Eradicator
       { id = "bhghoamapcdpbohphigoooaddinpkbai"; } #Authenticator
       { id = "laookkfknpbbblfpciffpaejjkokdgca"; } #Momentum
+      { id = "neaebjphlfplgdhedjdhcnpjkndddbpd"; } #Vue Telescope
+      { id = "iaajmlceplecbljialhhkmedjlpdblhp"; } #Vue.js devtools
     ];
 
    commandLineArgs = [
