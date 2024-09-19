@@ -71,6 +71,17 @@
         ];
       };
 
+      # HTPC configuration
+      workLaptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+       	specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/workLaptop/configuration.nix  # Laptop's configuration (if applicable)
+          inputs.home-manager.nixosModules.default
+          inputs.stylix.nixosModules.stylix
+        ];
+      };
+
       # Raspberry Pi configuration
       raspberryPi = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
