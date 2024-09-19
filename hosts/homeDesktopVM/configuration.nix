@@ -17,7 +17,7 @@
   #######################################################################
   # Networking Configuration
   #######################################################################
-  networking.hostName = "desktopGS"; # Define your hostname.
+  networking.hostName = "homeDesktopVM"; # Define your hostname.
   networking.networkmanager.enable = true; # Enable network management
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -66,7 +66,7 @@
   services.xserver.desktopManager.gnome.enable = true; # Enable GNOME Desktop Environment
  
   # Delete annoying GNOME apps
-  environment.gnome.excludePackages = with pkgs.gnome; [
+  environment.gnome.excludePackages = with pkgs; [
     baobab      # disk usage analyzer
     cheese      # photo booth
     eog         # image viewer
