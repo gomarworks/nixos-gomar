@@ -28,6 +28,7 @@
     xclip
     lazygit
     code-cursor
+    guacamole-client
   ];
 
   ##########################################################################
@@ -36,6 +37,7 @@
   imports = [ 
     ../../homeManagerModules/nixvim.nix # Nixvim configuration
     ../../homeManagerModules/kitty.nix # Kitty configuration
+    ../../homeManagerModules/emacs # Emacs configuration
     inputs.nixvim.homeManagerModules.default # Nixvim module import
   ]; 
 
@@ -65,9 +67,9 @@
   ##########################################################################
   # Environment Variables
   ##########################################################################
-  home.sessionVariables = {
+  #home.sessionVariables = {
   # EDITOR = "emacs"; # Example, set EDITOR environment variable
-  };
+  #};
 
   ##########################################################################
   # Home Manager Self-Management
