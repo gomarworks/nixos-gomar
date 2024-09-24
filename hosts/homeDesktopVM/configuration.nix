@@ -140,8 +140,8 @@
   stylix.cursor.name = "Bibata-Modern-Ice";
   stylix.fonts = {
     monospace = {
-      package = pkgs.dejavu_fonts;
-      name = "DejaVu Sans Mono";
+      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+     name = "JetBrainsMono Nerd Font Mono";
     };
     sansSerif = {
       package = pkgs.dejavu_fonts;

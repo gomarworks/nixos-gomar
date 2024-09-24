@@ -76,7 +76,7 @@
         system = "x86_64-linux";
        	specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/workLaptop/configuration.nix  # Laptop's configuration (if applicable)
+          ./hosts/HTPC/configuration.nix  # HTPC's configuration (if applicable)
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
         ];
