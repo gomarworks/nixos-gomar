@@ -140,8 +140,8 @@
   stylix.cursor.name = "Bibata-Modern-Ice";
   stylix.fonts = {
     monospace = {
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-      name = "JetBrainsMono Nerd Font Mono";
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Sans Mono";
     };
     sansSerif = {
       package = pkgs.dejavu_fonts;
@@ -152,7 +152,13 @@
       name = "DejaVu Serif";
     };
   };
-
+  stylix.fonts.sizes = {
+    desktop = 12;
+    applications = 11;
+    terminal = 14;
+    popups = 11;
+  };
+ 
 
   # services.openssh.enable = true; # Uncomment to enable OpenSSH
   # Firewall configuration (uncomment and customize if needed)

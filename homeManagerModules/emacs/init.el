@@ -12,8 +12,12 @@
 (savehist-mode 1)
 
 (save-place-mode 1)
+(global-auto-revert-mode 1)
 
-; Voeg transparantie toe
+
 (set-frame-parameter (selected-frame) 'alpha '(85 . 85))
 (add-to-list 'default-frame-alist '(alpha . (85 . 85)))
+
+(evil-mode 1)
+
 
