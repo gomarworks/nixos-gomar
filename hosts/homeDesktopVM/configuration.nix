@@ -128,7 +128,7 @@
   ];
 
   #######################################################################
-  # Other Services (Optional)
+  # System wide Stylix incl. bootloader (why it isnt in HM config)
   #######################################################################
 
   stylix.enable = true;

@@ -28,7 +28,7 @@
     xclip
     lazygit
     code-cursor
-    guacamole-client
+    syncthing
   ];
 
   ##########################################################################
