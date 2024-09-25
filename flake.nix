@@ -38,7 +38,7 @@
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
-      # Work Desktop configuration
+      # ATLAS - Work Desktop configuration
       atlas = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
@@ -49,45 +49,45 @@
         ];
       };
 
-      # Home Desktop VM configuration
-      homeDesktopVM = nixpkgs.lib.nixosSystem {
+      # EOS -Home Desktop configuration
+      eos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/homeDesktopVM/configuration.nix  # Home desktop VM's configuration
+          ./hosts/eos/configuration.nix  # Home desktop VM's configuration
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
         ];
       };
 
-      # Laptop configuration
-      workLaptop = nixpkgs.lib.nixosSystem {
+      # Freedman - Laptop configuration
+      freedman = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
        	specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/workLaptop/configuration.nix  # Laptop's configuration (if applicable)
+          ./hosts/freedman/configuration.nix  # Laptop's configuration (if applicable)
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
         ];
       };
 
-      # HTPC configuration
-      HTPC = nixpkgs.lib.nixosSystem {
+      # NYX - HTPC configuration
+      nyx = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
        	specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/HTPC/configuration.nix  # HTPC's configuration (if applicable)
+          ./hosts/nyx/configuration.nix  # HTPC's configuration (if applicable)
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
         ];
       };
 
       # Raspberry Pi configuration
-      raspberryPi = nixpkgs.lib.nixosSystem {
+      minimises = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/workPi/configuration.nix  # Raspberry Pi's configuration
+          ./hosts/minimises/configuration.nix  # Raspberry Pi's configuration
           inputs.home-manager.nixosModules.default
           inputs.disko.nixosModules.disko
         ];
