@@ -33,7 +33,7 @@
   imports = [ 
     ../../homeManagerModules/nixvim.nix # Nixvim configuration
     ../../homeManagerModules/kitty.nix # Kitty configuration
-    ../../homeManagerModules/emacs.nix # Emacs configuration
+    ../../homeManagerModules/emacs # Emacs configuration
     inputs.nixvim.homeManagerModules.default # Nixvim module import
   ]; 
 
