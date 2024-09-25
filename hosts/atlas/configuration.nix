@@ -13,10 +13,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.plymouth.enable = true;
+  boot.initrd.verbose = false;
+  boot.consoleLogLevel = 0;
+  boot.kernelParams = [ "quiet" "udev.log_level=0" ];
+
   #######################################################################
   # Networking Configuration
   #######################################################################
-  networking.hostName = "workDesktop"; # Define your hostname.
+  networking.hostName = "atlas"; # Define your hostname.
   networking.networkmanager.enable = true; # Enable network management
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -123,6 +128,7 @@
     htop # Interactive process viewer
     nmap # Network exploration tool
     cmus # Command line music player
+    syncthing # Add a Sync folder to the system
   ];
 
   #######################################################################

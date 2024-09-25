@@ -17,7 +17,7 @@
   #######################################################################
   # Networking Configuration
   #######################################################################
-  networking.hostName = "homeDesktopVM"; # Define your hostname.
+  networking.hostName = "eos"; # Define your hostname.
   networking.networkmanager.enable = true; # Enable network management
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

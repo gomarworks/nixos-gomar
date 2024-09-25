@@ -16,7 +16,7 @@
   #######################################################################
   # Networking Configuration
   #######################################################################
-  networking.hostName = "workDesktop"; # Define your hostname.
+  networking.hostName = "freedman"; # Define your hostname.
   networking.networkmanager.enable = true; # Enable network management
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

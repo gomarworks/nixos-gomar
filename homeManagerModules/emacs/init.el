@@ -20,4 +20,12 @@
 
 (evil-mode 1)
 
+;; Org mode TAB cycling in both normal and insert modes
+(defun my/org-mode-setup ()
+  "Custom configurations for Org mode."
+  (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
+  (evil-define-key 'insert org-mode-map (kbd "TAB") 'org-cycle))
+
+(add-hook 'org-mode-hook 'my/org-mode-setup)
+
 

@@ -39,11 +39,11 @@
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations = {
       # Work Desktop configuration
-      workDesktop = nixpkgs.lib.nixosSystem {
+      atlas = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/workDesktop/configuration.nix  # Work desktop's configuration
+          ./hosts/atlas/configuration.nix  # Work desktop's configuration
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
         ];
