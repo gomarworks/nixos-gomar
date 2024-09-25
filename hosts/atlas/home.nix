@@ -25,10 +25,8 @@
     teams-for-linux # Microsoft Teams for linux
     signal-desktop # Signal desktop client
     gimp
-    xclip
     lazygit
     code-cursor
-    obsidian
     orca-slicer
     spotify
   ];
@@ -69,9 +67,9 @@
   ##########################################################################
   # Environment Variables
   ##########################################################################
-  home.sessionVariables = {
-  # EDITOR = "emacs"; # Example, set EDITOR environment variable
-  };
+  # home.sessionVariables = {
+  #   EDITOR = "emacs"; # Example, set EDITOR environment variable
+  # };
 
   ##########################################################################
   # Home Manager Self-Management
