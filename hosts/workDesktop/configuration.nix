@@ -126,16 +126,16 @@
   ];
 
   #######################################################################
-  # Other Services (Optional)
+  # System wide Stylix incl. bootloader (why it isnt in HM config)
   #######################################################################
- 
+
   stylix.enable = true;
   stylix.image = ./wallpaper.png;
   stylix.opacity = {
     terminal = 0.7;
   };
-  stylix.cursor.package = pkgs.bibata-cursors;
-  stylix.cursor.name = "Bibata-Modern-Ice";
+  stylix.cursor.package = pkgs.apple-cursor; 
+  stylix.cursor.name = "macOS-White";
   stylix.fonts = {
     monospace = {
       package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};

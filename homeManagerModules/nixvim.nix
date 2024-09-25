@@ -15,6 +15,7 @@
         enable = true;
         keymaps."<C-p>" = "git_files";  # Ctrl-P for git files search
       };
+      web-devicons.enable = true;
       harpoon = {                   # Bookmarking plugin
         enable = true;
         keymaps.addFile = "<C-a>";         # Add file shortcut
