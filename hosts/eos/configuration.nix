@@ -132,7 +132,7 @@
   #######################################################################
 
   stylix.enable = true;
-  stylix.image = ./wallpaper.jpg;
+  stylix.image = ./wallpaper.png;
   stylix.opacity = {
     terminal = 0.7;
   };  
