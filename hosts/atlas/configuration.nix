@@ -60,40 +60,6 @@
     };
   };
 
-  #######################################################################
-  # Graphical Interface (X11 and GNOME)
-  #######################################################################
-  services.xserver.enable = true; # Enable X11 windowing system
-
-  # Enable the GNOME Desktop Environment
-  services.xserver.displayManager.gdm.enable = true; # Enable GNOME Display Manager
-  services.xserver.desktopManager.gnome.enable = true; # Enable GNOME Desktop Environment
-
-  # Delete annoying GNOME apps
-  environment.gnome.excludePackages = with pkgs; [
-    baobab      # disk usage analyzer
-    cheese      # photo booth
-    eog         # image viewer
-    epiphany    # web browser
-    simple-scan # document scanner
-    totem       # video player
-    yelp        # help viewer
-    evince      # document viewer
-    file-roller # archive manager
-    geary       # email client
-    seahorse    # password manager
-
-    # these should be self explanatory
-    gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
-    gnome-font-viewer gnome-logs gnome-maps gnome-music gnome-screenshot
-    gnome-system-monitor gnome-weather gnome-disk-utility pkgs.gnome-connections
-  ];
-  
-  # Keyboard configuration for X11
-  services.xserver.xkb = {
-    layout = "us"; # Set US layout
-    variant = ""; # No variant
-  };
 
   #######################################################################
   # Hardware Configuration
@@ -141,7 +107,7 @@
     terminal = 0.7;
   };
   stylix.cursor.package = pkgs.apple-cursor; 
-  stylix.cursor.name = "macOS-White";
+  stylix.cursor.name = "macOS";
   stylix.fonts = {
     monospace = {
       package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
@@ -163,6 +129,42 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # networking.firewall.enable = false; # Disable firewall (if not needed)
+
+  #######################################################################
+  # Graphical Interface (X11 and GNOME)
+  #######################################################################
+  
+  services.xserver.enable = true; # Enable X11 windowing system
+
+  # Enable the GNOME Desktop Environment
+  services.xserver.displayManager.gdm.enable = true; # Enable GNOME Display Manager
+  services.xserver.desktopManager.gnome.enable = true; # Enable GNOME Desktop Environment
+
+  # Delete annoying GNOME apps
+  environment.gnome.excludePackages = with pkgs; [
+    baobab      # disk usage analyzer
+    cheese      # photo booth
+    eog         # image viewer
+    epiphany    # web browser
+    simple-scan # document scanner
+    totem       # video player
+    yelp        # help viewer
+    evince      # document viewer
+    file-roller # archive manager
+    geary       # email client
+    seahorse    # password manager
+
+    # these should be self explanatory
+    gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
+    gnome-font-viewer gnome-logs gnome-maps gnome-music gnome-screenshot
+    gnome-system-monitor gnome-weather gnome-disk-utility pkgs.gnome-connections
+  ];
+  
+  # Keyboard configuration for X11
+  services.xserver.xkb = {
+    layout = "us"; # Set US layout
+    variant = ""; # No variant
+  };
 
   #######################################################################
   # System Version
