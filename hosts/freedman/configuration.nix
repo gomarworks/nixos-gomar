@@ -152,8 +152,8 @@
   stylix.opacity = {
     terminal = 0.7;
   };
-  stylix.cursor.package = pkgs.bibata-cursors;
-  stylix.cursor.name = "Bibata-Modern-Ice";
+  stylix.cursor.package = pkgs.apple-cursor;
+  stylix.cursor.name = "macOS";
   stylix.fonts = {
     monospace = {
       package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
