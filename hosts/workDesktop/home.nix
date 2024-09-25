@@ -30,6 +30,8 @@
     code-cursor
     obsidian
     orca-slicer
+    spotify
+    emacs
   ];
   
   ##########################################################################
@@ -38,7 +40,7 @@
   imports = [ 
     ../../homeManagerModules/nixvim.nix # Nixvim configuration
     ../../homeManagerModules/kitty.nix # Kitty configuration
-    ../../homeManagerModules/emacs.nix
+   # ../../homeManagerModules/emacs.nix
     inputs.nixvim.homeManagerModules.default # Nixvim module import
   ]; 
 
