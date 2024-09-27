@@ -1,0 +1,29 @@
+# /etc/systemd/system/display-manager.service
+[Unit]
+After=acpid.service systemd-logind.service systemd-user-sessions.service rc-local.service systemd-machined.service systemd-user-sessions.service getty@tty7.service plymouth-quit.service plymouth-start.service acpid.service systemd-logind.service systemd-user-sessions.service
+Conflicts=getty@tty7.service plymouth-quit.service
+Description=Display Manager
+OnFailure=plymouth-quit.service
+StartLimitBurst=3
+StartLimitIntervalSec=30
+Wants=systemd-machined.service accounts-daemon.service
+
+[Service]
+Environment="GDM_X_SERVER_EXTRA_ARGS=-config /nix/store/pf6rq51bzqk04wra5rx8vvi5ssgmzr8k-xserver.conf -xkbdir /nix/store/d7xk4kz4n4djsq37kf143wgll4z7i8m9-xkeyboard-config-2.42/etc/X11/xkb -logfile /dev/null -nolisten tcp"
+Environment="LOCALE_ARCHIVE=/nix/store/d6myxy49v33ir221631mrcj9iz7myzmc-glibc-locales-2.39-52/lib/locale/locale-archive"
+Environment="PATH=/nix/store/mfrxhirmx62pqpiwirf015brqjw8ldp0-gnome-session-46.0/bin:/nix/store/0kg70swgpg45ipcz3pr2siidq9fn6d77-coreutils-9.5/bin:/nix/store/fnq94lw19pnwdl9p8zhfrad4jmlgxlbr-findutils-4.10.0/bin:/nix/store/vsyc8jhsr4d9lm2r8yqq9n3j4i66inlj-gnugrep-3.11/bin:/nix/store/gjlh1zvckhz0qv795lnzgw2zciklbzj2-gnused-4.9/bin:/nix/store/1lbc6v5p1a3rn4rjaqnz0694xfbq8dxq-systemd-256.4/bin:/nix/store/mfrxhirmx62pqpiwirf015brqjw8ldp0-gnome-session-46.0/sbin:/nix/store/0kg70swgpg45ipcz3pr2siidq9fn6d77-coreutils-9.5/sbin:/nix/store/fnq94lw19pnwdl9p8zhfrad4jmlgxlbr-findutils-4.10.0/sbin:/nix/store/vsyc8jhsr4d9lm2r8yqq9n3j4i66inlj-gnugrep-3.11/sbin:/nix/store/gjlh1zvckhz0qv795lnzgw2zciklbzj2-gnused-4.9/sbin:/nix/store/1lbc6v5p1a3rn4rjaqnz0694xfbq8dxq-systemd-256.4/sbin"
+Environment="TZDIR=/nix/store/897xqnq52vw76991r5m80h9j91370vj9-tzdata-2024a/share/zoneinfo"
+Environment="XDG_DATA_DIRS=/nix/store/r6v2x5cpzbi5q0m96jfpryxnkyxiq71n-gdm-46.2/share:/nix/store/f940z5giijnhdfh8lv11vlzfpngaj391-desktops/share:/nix/store/979zmxx6yippiqp2l0p8yh9nsq3wvspn-gnome-control-center-46.4/share:/nix/store/kwivbr9qnbpwvgvw2cjaymc16jnjb5mv-adwaita-icon-theme-46.0/share:/nix/store/zjzqfbc67sf1py69l244v4n6kyb54w4q-hicolor-icon-theme-0.18/share"
+X-RestartIfChanged=false
+BusName=org.gnome.DisplayManager
+EnvironmentFile=-/etc/locale.conf
+ExecReload=/nix/store/0kg70swgpg45ipcz3pr2siidq9fn6d77-coreutils-9.5/bin/kill -SIGHUP $MAINPID
+ExecStart=/nix/store/vhjsf6b1d3qs5f5i2dk1fkha3vj8xhyd-unit-script-display-manager-start/bin/display-manager-start 
+ExecStartPre=/nix/store/2d9gkaydpx2lbia2vm9gmglz2iin6l7f-unit-script-display-manager-pre-start/bin/display-manager-pre-start
+IgnoreSIGPIPE=no
+KeyringMode=shared
+KillMode=mixed
+Restart=always
+RestartSec=200ms
+StandardError=inherit
+SyslogIdentifier=display-manager
